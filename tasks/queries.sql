@@ -297,6 +297,10 @@ bónusz 1. (4 pont)
 
     Elvárt eredmény:
         88 rekord
+
+    SELECT `Code`, `Code2`, `Name`
+    FROM `country`
+    WHERE SUBSTRING(`Code`, 1, 2) != `Code2`;
 */
 
 
@@ -310,6 +314,12 @@ bónusz 2. (4 pont)
 
     Elvárt eredmény:
         363 rekord
+
+    SELECT `city`.*
+    FROM `country`
+    INNER JOIN `city`
+    ON `country`.`Code` = `city`.`CountryCode`
+    WHERE `IndepYear` = (SELECT MIN(`IndepYear`) FROM `country`);
 */
 
 
@@ -326,6 +336,12 @@ bónusz 3. (4 pont)
             AFG 52.4
             AGO 37.2
             AIA 0.0
+
+    SELECT `country`.`Code`, MAX(`countrylanguage`.`Percentage`) AS `MaxSzázalék`
+    FROM `country`
+    INNER JOIN `countrylanguage`
+    ON `country`.`Code` = `countrylanguage`.`CountryCode`
+    GROUP BY `country`.`Code`;
 */
 
 
